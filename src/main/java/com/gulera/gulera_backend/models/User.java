@@ -1,14 +1,20 @@
 package com.gulera.gulera_backend.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Data
+@Table(name = "tb_user")
 public class User {
 
     @Id
@@ -27,7 +33,7 @@ public class User {
     private List<Workout> workouts = new ArrayList<>();
 
     @Column(nullable = false)
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     @Column(nullable = false)
     private Date updatedAt;
