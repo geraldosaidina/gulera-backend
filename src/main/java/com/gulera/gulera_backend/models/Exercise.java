@@ -9,7 +9,7 @@ import lombok.*;
 @Setter
 @Entity
 @Data
-@Table(name = "exercise")
+@Table(name = "tb_exercise")
 public class Exercise {
 
     @Id

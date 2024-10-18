@@ -8,7 +8,7 @@ CREATE TABLE exercise
     CONSTRAINT pk_exercise PRIMARY KEY (id)
 );
 
-CREATE TABLE "user"
+CREATE TABLE IF NOT EXISTS tb_user
 (
     user_id    VARCHAR(255) NOT NULL,
     email      VARCHAR(255) NOT NULL,
@@ -24,16 +24,16 @@ CREATE TABLE workout
     id          VARCHAR(255) NOT NULL,
     title       VARCHAR(255) NOT NULL,
     description VARCHAR(255),
-    date        TIMESTAMP WITHOUT TIME ZONE,
+    workout_date        TIMESTAMP WITHOUT TIME ZONE,
     user_id     VARCHAR(255),
     CONSTRAINT pk_workout PRIMARY KEY (id)
 );
 
-ALTER TABLE "user"
+ALTER TABLE tb_user
     ADD CONSTRAINT uc_user_username UNIQUE (username);
 
 ALTER TABLE exercise
     ADD CONSTRAINT FK_EXERCISE_ON_WORKOUT FOREIGN KEY (workout_id) REFERENCES workout (id);
 
 ALTER TABLE workout
-    ADD CONSTRAINT FK_WORKOUT_ON_USER FOREIGN KEY (user_id) REFERENCES "user" (user_id);
+    ADD CONSTRAINT FK_WORKOUT_ON_USER FOREIGN KEY (user_id) REFERENCES tb_user (user_id);
